@@ -31,10 +31,16 @@ dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     developmentOnly("org.springframework.boot:spring-boot-docker-compose")
     runtimeOnly("com.h2database:h2")
-    runtimeOnly("com.mysql:mysql-connector-j")
+//    runtimeOnly("com.mysql:mysql-connector-j")
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+    // Spring Boot Actuator - 모니터링
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+
+    // Micrometer Prometheus - 메트릭 수집
+    implementation("io.micrometer:micrometer-registry-prometheus")
 }
 
 tasks.withType<Test> {
