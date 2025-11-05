@@ -1,5 +1,6 @@
 version: '3.7'
 services:
+
   prometheus:
     image: prom/prometheus
     container_name: prometheus
@@ -26,3 +27,29 @@ services:
       - ./script.js:/script.js
     command: run /script.js
     network_mode: host
+
+  spring:
+    container_name: spring
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+
+    mysql:
+      image: mysql:8.0
+      container_name: mysql
+      restart: always
+      ports:
+        - "3306:3306"
+      environment:
+        MYSQL_DATABASE: "p-14578-1"
+        MYSQL_USER: "user"
+        MYSQL_PASSWORD: "root123414"
+        MYSQL_ROOT_PASSWORD: "root"
+        TZ: "Asia/Seoul"
+      command:
+        - --character-set-server=utf8mb4
+        - --collation-server=utf8mb4_unicode_ci
