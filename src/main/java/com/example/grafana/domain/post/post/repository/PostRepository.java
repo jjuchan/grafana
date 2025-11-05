@@ -1,0 +1,11 @@
+package com.example.grafana.domain.post.post.repository;
+
+import com.example.grafana.domain.post.post.entity.Post;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+
+
+@Repository
+public interface PostRepository extends JpaRepository<Post, Long> {
+}
